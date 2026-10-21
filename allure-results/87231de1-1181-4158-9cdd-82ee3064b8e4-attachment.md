@@ -1,0 +1,83 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: loginpagetest.spec.ts >> login to the application
+- Location: tests\loginpagetest.spec.ts:25:5
+
+# Error details
+
+```
+Error: expect(received).toContain(expected) // indexOf
+
+Expected substring: "inventory"
+Received string:    "https://www.saucedemo.com/"
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]: Swag Labs
+  - main [ref=e5]:
+    - form "Login" [ref=e9]:
+      - textbox "Username" [ref=e11]: secret_sauce
+      - textbox "Password" [ref=e15]
+      - alert [ref=e19]:
+        - button "Dismiss error" [ref=e20] [cursor=pointer]
+        - text: "Epic sadface: Password is required"
+      - button "Login" [active] [ref=e23] [cursor=pointer]
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "Accepted usernames are:" [level=4] [ref=e27]
+        - text: standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_user
+      - generic [ref=e28]:
+        - heading "Password for all users:" [level=4] [ref=e29]
+        - text: secret_sauce
+```
+
+# Test source
+
+```ts
+  1  | import {expect, test} from "@playwright/test"
+  2  | import { LoginPage } from "../src/pages/LoginPage"
+  3  | 
+  4  | let loginPage:LoginPage;
+  5  | 
+  6  | test("launch the application and test url", async ({page}) => {
+  7  |     
+  8  |     loginPage = new LoginPage(page);
+  9  |     await loginPage.gotoLoginPage();
+  10 |     let actualURL = await loginPage.getPageUrl();
+  11 |     expect(actualURL).toBe("https://www.saucedemo.com/");
+  12 |     console.log("The URL is : "+actualURL);
+  13 |     
+  14 | })
+  15 | 
+  16 | test("test the title of the page", async({page})=>{
+  17 |     loginPage =new LoginPage(page);
+  18 |     await loginPage.gotoLoginPage();
+  19 |     let actualTitle = await loginPage.getPageTitle();
+  20 |     expect(actualTitle).toBe("Swag Labs");
+  21 |     console.log("Title of the page is : "+actualTitle);
+  22 |     
+  23 | })
+  24 | 
+  25 | test("login to the application", async({page})=>{
+  26 |     loginPage = new LoginPage(page);
+  27 |     await loginPage.gotoLoginPage();
+  28 |     await loginPage.fillUserName(process.env.APPUSERNAME!);
+  29 |     await loginPage.fillPassword(process.env.APPPASSWORD!);
+  30 |     await loginPage.clickOnLogin();
+  31 |     console.log("Logged in successfully");
+  32 |     let currentURL = await loginPage.getPageUrl();
+> 33 |     expect(currentURL).toContain("inventory");
+     |                        ^ Error: expect(received).toContain(expected) // indexOf
+  34 |     console.log("Entered into Inventory page : "+ currentURL);
+  35 |     
+  36 | })
+```
