@@ -62,4 +62,10 @@ Steps followed:
         this happens --clean the report folder but not the results folder, to delete the previous results then this command helps
     
     Report customization:
+    1. Report customization can be done inside playwright.config.ts under reporter
+    2. to update the name of the report, the report generation command has to be updated as below
+    To generate report:
+            npx allure generate allure-results --clean --name "SwagLabs_TestReport" -o allure-report
+    To open report:
+            npx allure open allure-report
     

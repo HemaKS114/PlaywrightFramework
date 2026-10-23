@@ -11,8 +11,6 @@ type pageFixtures ={
     inventoryPage:InventoryPage;
     cartPage:CartPage;
 
-
-
 }
 
 //to create custom fixture, we use test.extend.. here we updated test as baseTest

@@ -39,6 +39,7 @@ test("login to the application", async({page})=>{
 
 test("login app", async({page})=>{
     loginPage = new LoginPage(page);
+    await loginPage.gotoLoginPage();
     await loginPage.toDoLogin(process.env.APPUSERNAME!,process.env.APPPASSWORD!);
     console.log("Logged in successfully");
     let currentURL = await loginPage.getPageUrl();

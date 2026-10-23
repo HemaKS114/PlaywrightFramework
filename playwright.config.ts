@@ -1,10 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
+import os from 'node:os';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 import dotenv from 'dotenv';
+import { channel } from 'node:diagnostics_channel';
+import { suite } from 'node:test';
 
 //get the current run time env 
 const ENV=process.env.ENV || "qa"
@@ -33,12 +36,41 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   // workers: process.env.CI ? "50%": undefined,
-   workers: 1,
+   workers: 6,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html',{
       outputFolder: 'reports/html-report',
       open: 'never'
-    }],["allure-playwright"]],
+    }],["allure-playwright",
+      {
+        resultsDir: 'allure-results',
+        detail: true,
+        suiteTitle: true,
+
+        environmentInfo:{
+          Project: 'Playwright Typescript framework',
+          Environment: ENV.toUpperCase(),
+          Browser: 'Chrome',
+          OS:`${os.platform()} ${os.release()}`,
+          NodeVersion: process.version
+        },
+        globalLabels:[
+          {name:'Hema Priya K S', value:'QA Team'},
+          {name: 'Framework', value: 'Playwright TypeScript'}
+        ],
+        categories:[
+          {
+            name:'Application Defects',
+            messageRegex:'.*',
+            matchedStatuses:['failed']
+          },
+          {
+            name:'Test or Infrastructure error',
+            matchedStatuses:['broken']
+          }
+        ]
+      }
+    ]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */

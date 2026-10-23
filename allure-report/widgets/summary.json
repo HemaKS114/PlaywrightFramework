@@ -1,1 +1,1 @@
-{"reportName":"Allure Report","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"time":{"start":1792754354343,"stop":1792754355768,"duration":1425,"minDuration":1425,"maxDuration":1425,"sumDuration":1425}}
+{"reportName":"SwagLabs_TestReport","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":14,"unknown":0,"total":14},"time":{"start":1792768320536,"stop":1792768330423,"duration":9887,"minDuration":1463,"maxDuration":8374,"sumDuration":50395}}

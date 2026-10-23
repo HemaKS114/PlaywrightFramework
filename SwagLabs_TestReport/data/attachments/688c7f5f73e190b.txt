@@ -1,0 +1,6 @@
+Actual data available in Inventory page : Products
+Actual data available in Inventory page : Products
+The Back pack name is : Sauce Labs Backpack
+First Name is : Hema Last Name is : Priya postal code is : 600073
+Order is placed and received the msg : Thank you for your order!
+Entire check out msg is : Your order has been dispatched, and will arrive just as fast as the pony can get there!
