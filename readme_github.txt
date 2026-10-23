@@ -14,7 +14,6 @@ Git installation and push commands:
 6. to push it on main branch
     git branch -M main
 7. Replace placeholders with your GitHub username and repository name. (If Git asks for authentication, use the supported GitHub sign-in flow; do not put credentials in the remote URL.)
-
     git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 8. push your code into git
     git push -u origin main -> for the first time. next time git push is enough
