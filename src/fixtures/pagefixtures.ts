@@ -1,6 +1,7 @@
 import { LoginPage } from "../pages/LoginPage"
 import {test as baseTest, } from "@playwright/test"
 import { InventoryPage } from "../pages/InventoryPage"
+import { CartPage } from "../pages/CartPage"
 
 
 
@@ -8,6 +9,8 @@ type pageFixtures ={
     //fixturename:PageClassName
     loginPage:LoginPage;
     inventoryPage:InventoryPage;
+    cartPage:CartPage;
+
 
 
 }
@@ -26,6 +29,11 @@ export const test = baseTest.extend<pageFixtures>({
     inventoryPage:async({page},use)=>{
         let inventoryPage = new InventoryPage(page);
         await use(inventoryPage);
+    },
+
+    cartPage:async({page},use)=>{
+        let cartPage = new CartPage(page);
+        await use(cartPage);
     }
 })
 

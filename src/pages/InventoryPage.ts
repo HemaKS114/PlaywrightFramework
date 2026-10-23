@@ -8,7 +8,7 @@ export class InventoryPage extends BasePage
     private readonly backpackNamecheck;
     private readonly addtoCartbutton_backPack;
     private readonly removefromCartbutton_backPack;
-    private readonly cartButton;
+    
 
 
     constructor(page:Page){
@@ -18,7 +18,7 @@ export class InventoryPage extends BasePage
         this.backpackNamecheck = page.locator("//a[@id='item_4_title_link']");
         this.addtoCartbutton_backPack = page.locator("//button[@id='add-to-cart-sauce-labs-backpack']");
         this.removefromCartbutton_backPack = page.locator("//button[@id='remove-sauce-labs-backpack']");
-        this.cartButton = page.locator("//div[@id='shopping_cart_container']");
+        
 
     }
 
@@ -44,10 +44,7 @@ export class InventoryPage extends BasePage
         await this.backPackNameCheck();
         await this.addtoCartbutton_backPack.click();
         await this.removefromCartbutton_backPack.isVisible();
-        await this.cartButton.click();
-        await this.backPackNameCheck();
-
-
+        
     }
 
 

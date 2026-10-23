@@ -1,2 +1,0 @@
-Application launched successfully
-Logged in successful and the url is : https://www.saucedemo.com/inventory.html

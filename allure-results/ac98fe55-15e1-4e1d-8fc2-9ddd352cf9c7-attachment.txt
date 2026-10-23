@@ -1,2 +1,0 @@
-Actual data available in Inventory page : Products
-The Back pack name is : Sauce Labs Backpack

@@ -1,2 +1,0 @@
-Logged in successfully
-Entered into Inventory page : https://www.saucedemo.com/inventory.html
