@@ -1,0 +1,101 @@
+Playwright Automation Framework
+
+1. Project Overview
+
+    This automation testing framework is developed with Playwright with typescript
+
+    The framework is designed to support both web application and API automation testing. it follows page object model, resuable custom fixtures and seperate test data management.
+
+    The primary objective to improve code resuability, maintainability, scalability and test execution efficiency.
+
+2. Technology Stack
+
+    1. Playwright
+    2. TypeScript
+    3. Node.js
+    4. Page Object Model (POM)
+    5. Custom Playwright Fixtures
+    6. JSON-based Test Data
+    7. Playwright API Testing
+    8. Allure Reporting
+
+3. Framework Architecture:
+
+    This framework organized into following layers
+
+    1. Configuration Layer
+        *playwright.config.ts => Manages playwright test execution configuration
+        *tsconfig.json => Typescript compiler configuration
+        *package.json = > Project dependencies and execution scripts
+    2. Page Object Layer
+        Located under src/pages/.
+            *BagePage.ts => Common reusable page interaction methods
+            *LoginPage.ts => contains locator and actions of login page
+            *CartPage.ts => contains locators and actions of Cartpage.ts
+            *InventoryPage.ts => contains locators and actions of InventoryPage.ts
+    3. Fixture Layer
+        Located under src/fixtures
+            *pagefixture.ts => provides resuable custom fixtures and page object initialization.
+    4. TestData Layer
+        Located under src/testData/.
+        Stores test data seperately from test implementation
+        Supports data driven test execution
+            *loginpageData.json => test data that used in loginpage
+            *checkoutpageData.json => test data that used in checkout page
+    5. Utilities Layer
+        Located under src/utilities/.
+        contains reusable helper functions and common utilites like json file reader.(future enhancement)
+    6. Test Layer
+        Located under tests/.
+        Page wise tests with the scenarios and its scripts using custom page fixtures and functions from respective page files.
+    7. Reporting Layer
+        Located under allure-report/. => Stores test reporting output
+        Located under allure-results/. => Stores test execution artifacts
+    
+4. Design Pattern
+
+    The framework follows page object model design pattern
+
+    Each application page is represented by an individual typescript classes. Each has its locators and actions are encapsulated within the classes.
+
+    Common methods are maintained in the BasePage class to avoid code duplication.
+    
+    Custom Playwright fixtures are used to initialize and provide page objects to test scripts.
+
+5. UI Test Execution Flow
+
+    1. Execute playwright command
+    2. Playwright loads the configuration file
+    3. Test runner identifies the matching test specifications.
+    4. Custom fixtures initialize the required page objects.
+    5. Test data retrieved from the relevant data file
+    6. Page object methods perform browser interactions
+    7. Assertions validates the expected results.
+    8. Test execution results and reports are generated.
+
+6. Reporting
+
+    Reporting helps to analayze test results
+
+    Allure reports are used in this framework as its provides detailed test reports, screenshots, videos, traces, categories and historical trends.
+
+7. Key Framework Benefits
+
+    1. Layered Automation framework
+    2. Seperation of test logic and page-specific implementation
+    3. Reusable page objects
+    4. Centralized common page interactions
+    5. Custom fixture based page object initialization
+    6. Seperation of test data and automation logic
+    7. Support UI and API validation
+    8. Maintainable and scalable framework
+
+8. Future Enhancements
+
+    1. CI/CD pipeline integration.
+    2. Cross-browser execution.
+    3. Parallel execution optimization.
+    4. Enhanced API test coverage.
+    5. Improved reporting and execution analytics including Emailing and sending reports via teams.
+    6. PDF validations
+    7. Environment-specific configuration management.

@@ -88,6 +88,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      testIgnore:'**/api/**',
       use: { ...devices['Desktop Chrome'],
         channel: 'chrome',
        },
@@ -99,7 +100,10 @@ export default defineConfig({
     // },
     {
       name: 'api',
-      testMatch:'**/api/**/*.spec.ts'
+      testMatch:'**/api/**/*.spec.ts',
+      use:{
+        baseURL: process.env.API_URL!
+      }
      
     }
     // {
